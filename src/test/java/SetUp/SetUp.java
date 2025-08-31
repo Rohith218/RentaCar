@@ -1,5 +1,7 @@
 package SetUp;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,7 +24,7 @@ public class SetUp {
 		return driver;
 		
 	}
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		Reports r = new Reports();
 		ExtentTest test = r.reportInitialize(reportName());
@@ -30,11 +32,11 @@ public class SetUp {
 		Thread.sleep(5000);
 		test.pass("driver initialized");
 		test.info("page loaded");
-		r.flushReport();
+		r.flushReport(reportName());
 		tearDown();
 	}
 	public static void setUp() {
-		driver = initialize();
+//		driver = initialize();
 		driver.manage().window().maximize();
 		driver.get("https://webapps.tekstac.com/RentaCar/");
 	}
